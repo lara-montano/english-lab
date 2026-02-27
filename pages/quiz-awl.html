@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TOEFL Vocabulary Quiz — Academic Word List | UAQ Ingeniería</title>
+<style>
+  :root {
+    --blue-dark: #1B3A6B;
+    --blue-med: #2E75B6;
+    --blue-light: #D6E4F0;
+    --orange: #C55A11;
+    --teal: #17606E;
+    --green: #1a7a4a;
+    --red: #c0392b;
+    --gray: #f4f6f9;
+    --white: #ffffff;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(135deg, #1B3A6B 0%, #17606E 100%);
+    min-height: 100vh;
+    padding: 20px;
+  }
+
+  .container {
+    max-width: 820px;
+    margin: 0 auto;
+  }
+
+  /* HEADER */
+  .header {
+    background: var(--white);
+    border-radius: 16px 16px 0 0;
+    padding: 28px 32px 20px;
+    border-bottom: 4px solid var(--blue-med);
+  }
+
+  .header-top {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 8px;
+  }
+
+  .uaq-badge {
+    background: var(--blue-dark);
+    color: white;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 6px 12px;
+    border-radius: 6px;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+  }
+
+  .header h1 {
+    color: var(--blue-dark);
+    font-size: 22px;
+    font-weight: 700;
+  }
+
+  .header p {
+    color: #666;
+    font-size: 13px;
+    margin-top: 4px;
+  }
+
+  .author {
+    font-size: 11px;
+    color: var(--teal);
+    font-weight: 600;
+    margin-top: 6px;
+  }
+
+  /* STATS BAR */
+  .stats-bar {
+    background: var(--blue-dark);
+    padding: 14px 32px;
+    display: flex;
+    gap: 32px;
+    align-items: center;
+  }
+
+  .stat {
+    text-align: center;
+    color: white;
+  }
+
+  .stat-num {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    opacity: 0.8;
+    margin-top: 2px;
+  }
+
+  .progress-wrap {
+    flex: 1;
+  }
+
+  .progress-label {
+    display: flex;
+    justify-content: space-between;
+    color: rgba(255,255,255,0.8);
+    font-size: 12px;
+    margin-bottom: 6px;
+  }
+
+  .progress-bar {
+    height: 8px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #2E75B6, #17606E);
+    border-radius: 4px;
+    transition: width 0.4s ease;
+    width: 0%;
+  }
+
+  /* MAIN CARD */
+  .card {
+    background: var(--white);
+    padding: 36px 32px;
+  }
+
+  /* MODE SELECTOR */
+  .mode-selector {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+  }
+
+  .mode-btn {
+    padding: 8px 18px;
+    border: 2px solid var(--blue-med);
+    background: var(--white);
+    color: var(--blue-med);
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .mode-btn.active {
+    background: var(--blue-med);
+    color: white;
+  }
+
+  .mode-btn:hover:not(.active) {
+    background: var(--blue-light);
+  }
+
+  /* QUESTION AREA */
+  .question-number {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--orange);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .question-text {
+    font-size: 20px;
+    color: var(--blue-dark);
+    font-weight: 600;
+    line-height: 1.5;
+    margin-bottom: 8px;
+  }
+
+  .question-hint {
+    font-size: 13px;
+    color: #888;
+    font-style: italic;
+    margin-bottom: 28px;
+    padding: 10px 14px;
+    background: var(--gray);
+    border-radius: 8px;
+    border-left: 3px solid var(--blue-light);
+  }
+
+  /* OPTIONS */
+  .options {
+    display: grid;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  .option {
+    padding: 16px 20px;
+    border: 2px solid #e0e6ef;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 15px;
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: var(--white);
+  }
+
+  .option:hover:not(.disabled) {
+    border-color: var(--blue-med);
+    background: var(--blue-light);
+    transform: translateX(4px);
+  }
+
+  .option-letter {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #eef2f8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--blue-dark);
+    flex-shrink: 0;
+    transition: all 0.2s;
+  }
+
+  .option.correct {
+    border-color: var(--green);
+    background: #eafaf2;
+  }
+
+  .option.correct .option-letter {
+    background: var(--green);
+    color: white;
+  }
+
+  .option.wrong {
+    border-color: var(--red);
+    background: #fdecea;
+  }
+
+  .option.wrong .option-letter {
+    background: var(--red);
+    color: white;
+  }
+
+  .option.disabled { cursor: not-allowed; }
+
+  /* FILL IN BLANK */
+  .fill-input-wrap {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 16px;
+    align-items: center;
+  }
+
+  .fill-input {
+    flex: 1;
+    padding: 14px 18px;
+    border: 2px solid #e0e6ef;
+    border-radius: 10px;
+    font-size: 16px;
+    color: var(--blue-dark);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .fill-input:focus { border-color: var(--blue-med); }
+  .fill-input.correct { border-color: var(--green); background: #eafaf2; }
+  .fill-input.wrong { border-color: var(--red); background: #fdecea; }
+
+  .check-btn {
+    padding: 14px 24px;
+    background: var(--blue-med);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    white-space: nowrap;
+  }
+
+  .check-btn:hover { background: var(--blue-dark); }
+  .check-btn:disabled { background: #aaa; cursor: not-allowed; }
+
+  /* FEEDBACK */
+  .feedback {
+    padding: 14px 18px;
+    border-radius: 10px;
+    font-size: 14px;
+    margin-bottom: 20px;
+    display: none;
+    line-height: 1.5;
+  }
+
+  .feedback.show { display: block; }
+
+  .feedback.correct-fb {
+    background: #eafaf2;
+    border-left: 4px solid var(--green);
+    color: #145a32;
+  }
+
+  .feedback.wrong-fb {
+    background: #fdecea;
+    border-left: 4px solid var(--red);
+    color: #78281f;
+  }
+
+  .feedback strong { font-weight: 700; }
+
+  /* BUTTONS */
+  .btn-row {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+    margin-top: 8px;
+  }
+
+  .next-btn {
+    padding: 13px 28px;
+    background: var(--orange);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    display: none;
+  }
+
+  .next-btn.show { display: block; }
+  .next-btn:hover { background: #a04a0e; }
+
+  .skip-btn {
+    padding: 13px 20px;
+    background: transparent;
+    color: #999;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .skip-btn:hover { border-color: #aaa; color: #666; }
+
+  /* RESULTS SCREEN */
+  .results-screen {
+    display: none;
+    text-align: center;
+    padding: 20px 0;
+  }
+
+  .results-screen.show { display: block; }
+
+  .score-circle {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    margin: 0 auto 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+  }
+
+  .score-circle.excellent { background: linear-gradient(135deg, #1a7a4a, #27ae60); color: white; }
+  .score-circle.good { background: linear-gradient(135deg, #2E75B6, #17606E); color: white; }
+  .score-circle.fair { background: linear-gradient(135deg, #e67e22, #C55A11); color: white; }
+  .score-circle.needs-work { background: linear-gradient(135deg, #c0392b, #922b21); color: white; }
+
+  .score-pct { font-size: 42px; line-height: 1; }
+  .score-label-sm { font-size: 13px; opacity: 0.9; }
+
+  .results-title {
+    font-size: 24px;
+    color: var(--blue-dark);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .results-sub {
+    color: #666;
+    font-size: 15px;
+    margin-bottom: 28px;
+  }
+
+  .results-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  .result-stat {
+    background: var(--gray);
+    border-radius: 12px;
+    padding: 20px 16px;
+  }
+
+  .result-stat-num {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--blue-dark);
+  }
+
+  .result-stat-label {
+    font-size: 12px;
+    color: #888;
+    margin-top: 4px;
+  }
+
+  .restart-btn {
+    padding: 14px 36px;
+    background: var(--blue-dark);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    margin: 0 8px;
+    transition: background 0.2s;
+  }
+
+  .restart-btn:hover { background: var(--blue-med); }
+
+  .review-list {
+    text-align: left;
+    margin-top: 28px;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+  }
+
+  .review-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--blue-dark);
+    margin-bottom: 14px;
+  }
+
+  .review-item {
+    padding: 12px 16px;
+    border-radius: 10px;
+    margin-bottom: 8px;
+    font-size: 14px;
+  }
+
+  .review-item.r-correct { background: #eafaf2; border-left: 3px solid var(--green); }
+  .review-item.r-wrong { background: #fdecea; border-left: 3px solid var(--red); }
+
+  .review-word { font-weight: 700; color: var(--blue-dark); }
+  .review-answer { color: #555; margin-top: 2px; }
+
+  /* INTRO SCREEN */
+  .intro-screen {
+    text-align: center;
+    padding: 20px 0;
+  }
+
+  .intro-screen.hidden { display: none; }
+
+  .quiz-icon {
+    font-size: 64px;
+    margin-bottom: 16px;
+  }
+
+  .intro-title {
+    font-size: 26px;
+    color: var(--blue-dark);
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+
+  .intro-desc {
+    color: #666;
+    font-size: 15px;
+    line-height: 1.7;
+    margin-bottom: 28px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .intro-options {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+  }
+
+  .difficulty-btn {
+    padding: 10px 22px;
+    border: 2px solid #ddd;
+    background: white;
+    border-radius: 20px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-weight: 600;
+  }
+
+  .difficulty-btn.selected { border-color: var(--blue-med); background: var(--blue-light); color: var(--blue-dark); }
+  .difficulty-btn:hover:not(.selected) { border-color: var(--blue-med); }
+
+  .start-btn {
+    padding: 16px 48px;
+    background: var(--blue-dark);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 17px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s;
+    letter-spacing: 0.5px;
+  }
+
+  .start-btn:hover { background: var(--blue-med); }
+
+  /* FOOTER */
+  .footer {
+    background: var(--blue-dark);
+    border-radius: 0 0 16px 16px;
+    padding: 14px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-text {
+    color: rgba(255,255,255,0.7);
+    font-size: 12px;
+  }
+
+  .section-tag {
+    background: rgba(255,255,255,0.15);
+    color: white;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 12px;
+  }
+
+  /* TIMER */
+  .timer-bar {
+    height: 4px;
+    background: #eee;
+    border-radius: 2px;
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+
+  .timer-fill {
+    height: 100%;
+    background: var(--orange);
+    border-radius: 2px;
+    transition: width 1s linear;
+  }
+
+  .question-area { display: none; }
+  .question-area.show { display: block; }
+
+  @media (max-width: 600px) {
+    .stats-bar { flex-wrap: wrap; gap: 16px; }
+    .results-grid { grid-template-columns: repeat(3, 1fr); }
+    .header h1 { font-size: 18px; }
+    .question-text { font-size: 17px; }
+    .card { padding: 24px 20px; }
+    .header { padding: 20px; }
+    .stats-bar { padding: 12px 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-top">
+      <div class="uaq-badge">UAQ · FACULTAD DE INGENIERÍA</div>
+      <div>
+        <h1>📘 TOEFL Vocabulary Quiz</h1>
+        <p>Academic Word List (AWL) — Reading & Writing Preparation</p>
+      </div>
+    </div>
+    <div class="author">Dr. Oscar Daniel Lara Montaño · TOEFL Preparation Program</div>
+  </div>
+
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div class="stat">
+      <div class="stat-num" id="statCorrect">0</div>
+      <div class="stat-label">Correct</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num" id="statWrong">0</div>
+      <div class="stat-label">Incorrect</div>
+    </div>
+    <div class="progress-wrap">
+      <div class="progress-label">
+        <span>Progress</span>
+        <span id="progressText">0 / 0</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+    </div>
+    <div class="stat">
+      <div class="stat-num" id="statScore">0%</div>
+      <div class="stat-label">Score</div>
+    </div>
+  </div>
+
+  <!-- MAIN CARD -->
+  <div class="card">
+
+    <!-- INTRO SCREEN -->
+    <div class="intro-screen" id="introScreen">
+      <div class="quiz-icon">🎓</div>
+      <div class="intro-title">Academic Word List Quiz</div>
+      <div class="intro-desc">
+        Test your knowledge of the most important academic vocabulary for the TOEFL exam.
+        This quiz covers the 60 core AWL words essential for Reading, Writing, and Speaking sections.
+      </div>
+
+      <div style="margin-bottom:20px;">
+        <div style="font-size:14px;font-weight:600;color:#555;margin-bottom:12px;">Select Quiz Mode:</div>
+        <div class="mode-selector" style="justify-content:center;">
+          <button class="mode-btn active" onclick="selectMode(this,'definition')" data-mode="definition">📖 Definition Match</button>
+          <button class="mode-btn" onclick="selectMode(this,'fill')" data-mode="fill">✏️ Fill in the Blank</button>
+          <button class="mode-btn" onclick="selectMode(this,'mixed')" data-mode="mixed">🔀 Mixed Mode</button>
+        </div>
+      </div>
+
+      <div style="margin-bottom:28px;">
+        <div style="font-size:14px;font-weight:600;color:#555;margin-bottom:12px;">Number of Questions:</div>
+        <div class="intro-options">
+          <button class="difficulty-btn selected" onclick="selectCount(this,10)">10 Questions</button>
+          <button class="difficulty-btn" onclick="selectCount(this,20)">20 Questions</button>
+          <button class="difficulty-btn" onclick="selectCount(this,40)">40 Questions</button>
+          <button class="difficulty-btn" onclick="selectCount(this,60)">Full Quiz (60)</button>
+        </div>
+      </div>
+
+      <button class="start-btn" onclick="startQuiz()">▶ Start Quiz</button>
+    </div>
+
+    <!-- QUESTION AREA -->
+    <div class="question-area" id="questionArea">
+      <div class="timer-bar"><div class="timer-fill" id="timerFill" style="width:100%"></div></div>
+      <div class="question-number" id="questionNumber">QUESTION 1 OF 10</div>
+      <div class="question-text" id="questionText"></div>
+      <div class="question-hint" id="questionHint"></div>
+
+      <!-- Multiple choice options -->
+      <div class="options" id="optionsContainer"></div>
+
+      <!-- Fill in blank -->
+      <div id="fillContainer" style="display:none">
+        <div class="fill-input-wrap">
+          <input type="text" class="fill-input" id="fillInput" placeholder="Type the word here..." autocomplete="off" autocapitalize="none">
+          <button class="check-btn" id="checkBtn" onclick="checkFill()">Check ✓</button>
+        </div>
+      </div>
+
+      <div class="feedback" id="feedback"></div>
+
+      <div class="btn-row">
+        <button class="skip-btn" id="skipBtn" onclick="skipQuestion()">Skip →</button>
+        <button class="next-btn" id="nextBtn" onclick="nextQuestion()">Next Question →</button>
+      </div>
+    </div>
+
+    <!-- RESULTS SCREEN -->
+    <div class="results-screen" id="resultsScreen">
+      <div class="score-circle" id="scoreCircle">
+        <div class="score-pct" id="scorePct">0%</div>
+        <div class="score-label-sm">Final Score</div>
+      </div>
+      <div class="results-title" id="resultsTitle">Quiz Complete!</div>
+      <div class="results-sub" id="resultsSub"></div>
+
+      <div class="results-grid">
+        <div class="result-stat">
+          <div class="result-stat-num" id="resCorrect" style="color:var(--green)">0</div>
+          <div class="result-stat-label">✅ Correct</div>
+        </div>
+        <div class="result-stat">
+          <div class="result-stat-num" id="resWrong" style="color:var(--red)">0</div>
+          <div class="result-stat-label">❌ Incorrect</div>
+        </div>
+        <div class="result-stat">
+          <div class="result-stat-num" id="resSkipped" style="color:var(--orange)">0</div>
+          <div class="result-stat-label">⏭ Skipped</div>
+        </div>
+      </div>
+
+      <div>
+        <button class="restart-btn" onclick="restartQuiz()">🔄 Try Again</button>
+        <button class="restart-btn" onclick="newQuiz()" style="background:var(--teal)">📚 New Quiz</button>
+      </div>
+
+      <div class="review-list" id="reviewList"></div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-text">Universidad Autónoma de Querétaro · TOEFL Preparation Program · 2024–2025</div>
+    <div class="section-tag">AWL Vocabulary</div>
+  </div>
+
+</div>
+
+<script>
+// ============================================================
+//  COMPLETE AWL WORD BANK — 60 words
+// ============================================================
+const wordBank = [
+  { word:"analyze", def:"To examine in detail in order to discover meaning or patterns", ex:"Engineers must ___ data before proposing solutions.", alt:["synthesize","memorize","ignore"] },
+  { word:"assess", def:"To evaluate or estimate the nature or quality of something", ex:"The committee will ___ the impact of the new policy.", alt:["avoid","destroy","create"] },
+  { word:"assume", def:"To accept something as true without proof or verification", ex:"We ___ that the variables remain constant throughout the experiment.", alt:["disprove","forget","measure"] },
+  { word:"clarify", def:"To make something clearer or easier to understand", ex:"The professor ___d the concept of entropy during the lecture.", alt:["confuse","hide","expand"] },
+  { word:"conclude", def:"To reach a decision or judgment after careful consideration", ex:"The study ___d that renewable energy is more cost-effective.", alt:["begin","ignore","question"] },
+  { word:"constitute", def:"To be or form a part of a whole", ex:"Proteins ___ a large portion of cellular structure.", alt:["destroy","replace","avoid"] },
+  { word:"context", def:"The circumstances that form the setting for an event or idea", ex:"Understanding the historical ___ helps interpret the data.", alt:["result","error","method"] },
+  { word:"contrast", def:"To compare in a way that emphasizes differences", ex:"The authors ___ traditional methods with modern techniques.", alt:["combine","repeat","ignore"] },
+  { word:"contribute", def:"To give or supply something that helps achieve a result", ex:"Carbon emissions ___ significantly to climate change.", alt:["reduce","prevent","avoid"] },
+  { word:"define", def:"To state or describe exactly the nature or meaning of something", ex:"The textbook ___s thermodynamics in its first chapter.", alt:["erase","copy","ignore"] },
+  { word:"demonstrate", def:"To show clearly by evidence or example", ex:"The experiment ___d the validity of the hypothesis.", alt:["hide","disprove","forget"] },
+  { word:"derive", def:"To obtain or develop from a source or origin", ex:"The formula is ___d from Newton's second law of motion.", alt:["invent","destroy","imagine"] },
+  { word:"distinct", def:"Recognizably different in nature from something else", ex:"The two compounds have ___ chemical properties.", alt:["identical","similar","common"] },
+  { word:"emerge", def:"To become apparent or known; to arise from something", ex:"New technologies ___ as a result of ongoing research.", alt:["disappear","sink","hide"] },
+  { word:"emphasize", def:"To give special importance or prominence to something", ex:"The professor ___d the importance of safety protocols.", alt:["minimize","ignore","remove"] },
+  { word:"establish", def:"To set up or lay the foundations of something on a firm basis", ex:"Scientists ___d a new framework for quantum computing.", alt:["destroy","avoid","hide"] },
+  { word:"evaluate", def:"To form an idea of the amount or value of something", ex:"Engineers ___ prototypes before full-scale production.", alt:["ignore","destroy","skip"] },
+  { word:"evidence", def:"Information or facts that indicate whether a belief is true or valid", ex:"The ___ supports the theory of plate tectonics.", alt:["opinion","guess","feeling"] },
+  { word:"evolve", def:"To develop gradually and naturally over time", ex:"Engineering practices ___ with advances in technology.", alt:["disappear","remain","stop"] },
+  { word:"expose", def:"To reveal or make visible; to subject something to an influence", ex:"Workers were ___d to high levels of radiation.", alt:["hide","protect","avoid"] },
+  { word:"factor", def:"A circumstance that contributes to a result or outcome", ex:"Temperature is a key ___ in chemical reaction rates.", alt:["error","accident","choice"] },
+  { word:"focus", def:"To concentrate attention or effort on a particular issue", ex:"The study ___es on the effects of air pollution on health.", alt:["avoid","scatter","ignore"] },
+  { word:"function", def:"The purpose or role of something; to work or operate", ex:"The valve's ___ is to regulate fluid pressure.", alt:["error","weight","color"] },
+  { word:"generate", def:"To produce or create something", ex:"Solar panels ___ electricity from sunlight.", alt:["consume","destroy","avoid"] },
+  { word:"identify", def:"To recognize or establish the identity or nature of something", ex:"Researchers ___ied three main causes of the failure.", alt:["ignore","hide","invent"] },
+  { word:"illustrate", def:"To explain or make clear by using examples or comparisons", ex:"The diagram ___s the structure of a molecule.", alt:["confuse","hide","erase"] },
+  { word:"impact", def:"A marked effect or strong influence on something", ex:"Industrialization has had a major ___ on the environment.", alt:["color","weight","size"] },
+  { word:"implement", def:"To put a decision, plan, or agreement into effect", ex:"The company ___ed new safety regulations last year.", alt:["ignore","remove","avoid"] },
+  { word:"imply", def:"To strongly suggest the truth of something without directly stating it", ex:"The results ___ that the material is not suitable.", alt:["deny","confirm","state"] },
+  { word:"indicate", def:"To point out or show; to be a sign or symptom of", ex:"The data ___ a significant increase in temperature.", alt:["hide","ignore","deny"] },
+  { word:"integrate", def:"To combine or incorporate parts into a whole system", ex:"The new system ___s mechanical and digital components.", alt:["separate","destroy","remove"] },
+  { word:"interpret", def:"To explain the meaning of; to understand in a particular way", ex:"Scientists ___ data based on accepted theories.", alt:["ignore","invent","destroy"] },
+  { word:"investigate", def:"To carry out a systematic inquiry in order to discover facts", ex:"The team ___d the cause of the structural failure.", alt:["avoid","ignore","hide"] },
+  { word:"involve", def:"To include or have as a necessary part or result", ex:"The process ___s several stages of filtration.", alt:["exclude","avoid","remove"] },
+  { word:"justify", def:"To show or prove to be right or reasonable", ex:"Engineers must ___ their design choices with calculations.", alt:["hide","avoid","destroy"] },
+  { word:"maintain", def:"To keep in an existing state; to preserve or uphold", ex:"It is essential to ___ proper calibration of instruments.", alt:["destroy","remove","ignore"] },
+  { word:"method", def:"A particular form of procedure for accomplishing something", ex:"The scientific ___ is fundamental to research.", alt:["mistake","color","feeling"] },
+  { word:"modify", def:"To make partial or minor changes to something", ex:"The researchers ___ied the formula to improve efficiency.", alt:["destroy","copy","ignore"] },
+  { word:"obtain", def:"To come into possession or control of something", ex:"Students must ___ a minimum score to pass the course.", alt:["lose","destroy","ignore"] },
+  { word:"occur", def:"To happen; to exist or be found somewhere", ex:"Chemical reactions ___ when molecules collide.", alt:["stop","avoid","prevent"] },
+  { word:"parameter", def:"A numerical or measurable factor that helps define a system", ex:"The ___s of the experiment were carefully controlled.", alt:["color","error","feeling"] },
+  { word:"phenomenon", def:"A fact or situation that is observed to exist or happen", ex:"The Northern Lights are a natural ___.", alt:["mistake","opinion","theory"] },
+  { word:"primary", def:"Of chief importance; most significant", ex:"The ___ goal of the research is to reduce emissions.", alt:["minor","last","hidden"] },
+  { word:"principle", def:"A fundamental rule or belief serving as the basis of reasoning", ex:"The ___ of conservation of energy applies universally.", alt:["mistake","opinion","guess"] },
+  { word:"process", def:"A series of actions or steps taken to achieve a result", ex:"The manufacturing ___ involves quality control at each stage.", alt:["error","color","feeling"] },
+  { word:"range", def:"The limits between which something varies; a set of values", ex:"The temperature ___ for the reaction is 50–100°C.", alt:["color","weight","shape"] },
+  { word:"relevant", def:"Closely connected or appropriate to what is being discussed", ex:"Only ___ data should be included in the report.", alt:["random","outdated","useless"] },
+  { word:"require", def:"To need something for a purpose; to make necessary", ex:"The TOEFL ___s a minimum score for university admission.", alt:["avoid","ignore","reject"] },
+  { word:"reveal", def:"To make known; to allow something hidden to be seen", ex:"The analysis ___ed unexpected patterns in the data.", alt:["hide","destroy","ignore"] },
+  { word:"significant", def:"Important; large enough to have a noticeable effect", ex:"There was a ___ decrease in pollution after the policy.", alt:["minor","tiny","invisible"] },
+  { word:"similar", def:"Resembling without being identical; having qualities in common", ex:"The two structures have ___ mechanical properties.", alt:["opposite","different","unique"] },
+  { word:"strategy", def:"A plan designed to achieve a long-term aim", ex:"The company developed a ___ to reduce energy consumption.", alt:["mistake","feeling","color"] },
+  { word:"structure", def:"The arrangement or organization of the parts of something", ex:"The ___ of DNA was first described in 1953.", alt:["color","weight","taste"] },
+  { word:"suggest", def:"To put forward an idea for consideration; to imply", ex:"The results ___ that the hypothesis may be incorrect.", alt:["prove","confirm","deny"] },
+  { word:"summarize", def:"To give a brief statement of the main points", ex:"Please ___ the key findings of the study.", alt:["expand","ignore","repeat"] },
+  { word:"theory", def:"A set of principles on which a practice or explanation is based", ex:"Einstein's ___ of relativity changed modern physics.", alt:["mistake","feeling","color"] },
+  { word:"thereby", def:"By that means; as a result of that action", ex:"The process reduces friction, ___ improving efficiency.", alt:["however","despite","unless"] },
+  { word:"therefore", def:"As a logical conclusion; for that reason", ex:"The sample was small; ___, results may not generalize.", alt:["however","although","because"] },
+  { word:"utilize", def:"To make practical and effective use of something", ex:"Engineers ___ computer simulations to test designs.", alt:["destroy","ignore","avoid"] },
+  { word:"variable", def:"An element or factor that is liable to vary or change", ex:"The experiment controlled all ___s except temperature.", alt:["constant","rule","fact"] }
+];
+
+// ============================================================
+//  STATE
+// ============================================================
+let state = {
+  mode: 'definition',
+  total: 10,
+  questions: [],
+  current: 0,
+  correct: 0,
+  wrong: 0,
+  skipped: 0,
+  answered: false,
+  results: [],
+  timerInterval: null,
+  timerSec: 0,
+};
+
+// ============================================================
+//  INTRO CONTROLS
+// ============================================================
+function selectMode(btn, mode) {
+  document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  state.mode = mode;
+}
+
+function selectCount(btn, count) {
+  document.querySelectorAll('.difficulty-btn').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+  state.total = count;
+}
+
+function startQuiz() {
+  // Shuffle and pick
+  const shuffled = [...wordBank].sort(() => Math.random() - 0.5);
+  state.questions = shuffled.slice(0, Math.min(state.total, wordBank.length));
+  state.current = 0;
+  state.correct = 0;
+  state.wrong = 0;
+  state.skipped = 0;
+  state.results = [];
+
+  document.getElementById('introScreen').classList.add('hidden');
+  document.getElementById('questionArea').classList.add('show');
+  document.getElementById('resultsScreen').classList.remove('show');
+
+  updateStats();
+  renderQuestion();
+}
+
+// ============================================================
+//  QUESTION RENDERING
+// ============================================================
+function getCurrentMode() {
+  if (state.mode === 'mixed') return Math.random() > 0.5 ? 'definition' : 'fill';
+  return state.mode;
+}
+
+function renderQuestion() {
+  const q = state.questions[state.current];
+  const qMode = getCurrentMode();
+  state.currentMode = qMode;
+  state.answered = false;
+
+  document.getElementById('questionNumber').textContent =
+    `QUESTION ${state.current + 1} OF ${state.questions.length}`;
+
+  const feedback = document.getElementById('feedback');
+  feedback.className = 'feedback';
+  feedback.innerHTML = '';
+
+  document.getElementById('nextBtn').classList.remove('show');
+  document.getElementById('skipBtn').style.display = '';
+
+  // Timer
+  clearInterval(state.timerInterval);
+  const timerFill = document.getElementById('timerFill');
+  const TIMER_SEC = 30;
+  let elapsed = 0;
+  timerFill.style.transition = 'none';
+  timerFill.style.width = '100%';
+  setTimeout(() => {
+    timerFill.style.transition = 'width 1s linear';
+    state.timerInterval = setInterval(() => {
+      elapsed++;
+      timerFill.style.width = Math.max(0, 100 - (elapsed / TIMER_SEC * 100)) + '%';
+      if (elapsed >= TIMER_SEC && !state.answered) {
+        clearInterval(state.timerInterval);
+        if (!state.answered) autoTimeOut();
+      }
+    }, 1000);
+  }, 50);
+
+  if (qMode === 'definition') renderDefinitionQ(q);
+  else renderFillQ(q);
+}
+
+function renderDefinitionQ(q) {
+  document.getElementById('questionText').textContent =
+    `What is the best definition of the word "${q.word}"?`;
+  document.getElementById('questionHint').innerHTML =
+    `💡 <em>Context: ${q.ex.replace('___', `<strong>${q.word}</strong>`)}</em>`;
+
+  document.getElementById('optionsContainer').style.display = 'grid';
+  document.getElementById('fillContainer').style.display = 'none';
+
+  // Build 4 options
+  const wrong = q.alt.sort(() => Math.random() - 0.5).slice(0, 3).map(alt => {
+    const match = wordBank.find(w => w.word === alt);
+    return match ? match.def : alt;
+  });
+  const allOpts = [q.def, ...wrong].sort(() => Math.random() - 0.5);
+  const letters = ['A', 'B', 'C', 'D'];
+
+  const container = document.getElementById('optionsContainer');
+  container.innerHTML = '';
+  allOpts.forEach((opt, i) => {
+    const btn = document.createElement('div');
+    btn.className = 'option';
+    btn.dataset.correct = opt === q.def ? '1' : '0';
+    btn.innerHTML = `<div class="option-letter">${letters[i]}</div><span>${opt}</span>`;
+    btn.onclick = () => selectOption(btn, q);
+    container.appendChild(btn);
+  });
+}
+
+function renderFillQ(q) {
+  document.getElementById('questionText').textContent =
+    `Fill in the blank with the correct word:`;
+  document.getElementById('questionHint').innerHTML =
+    `<em>"${q.ex.replace('___', '________')}"</em><br>
+     <span style="font-size:12px;color:#999;margin-top:6px;display:block;">Definition hint: ${q.def}</span>`;
+
+  document.getElementById('optionsContainer').style.display = 'none';
+  document.getElementById('fillContainer').style.display = 'block';
+
+  const input = document.getElementById('fillInput');
+  input.value = '';
+  input.className = 'fill-input';
+  input.disabled = false;
+  document.getElementById('checkBtn').disabled = false;
+
+  setTimeout(() => input.focus(), 100);
+
+  input.onkeydown = (e) => {
+    if (e.key === 'Enter') checkFill();
+  };
+}
+
+// ============================================================
+//  ANSWER LOGIC
+// ============================================================
+function selectOption(btn, q) {
+  if (state.answered) return;
+  state.answered = true;
+  clearInterval(state.timerInterval);
+
+  const isCorrect = btn.dataset.correct === '1';
+  const allOptions = document.querySelectorAll('.option');
+
+  allOptions.forEach(opt => {
+    opt.classList.add('disabled');
+    opt.onclick = null;
+    if (opt.dataset.correct === '1') opt.classList.add('correct');
+    else if (opt === btn && !isCorrect) opt.classList.add('wrong');
+  });
+
+  showFeedback(isCorrect, q, null);
+  recordResult(isCorrect, q);
+  document.getElementById('skipBtn').style.display = 'none';
+  document.getElementById('nextBtn').classList.add('show');
+}
+
+function checkFill() {
+  if (state.answered) return;
+  const input = document.getElementById('fillInput');
+  const userAnswer = input.value.trim().toLowerCase();
+  const q = state.questions[state.current];
+
+  if (!userAnswer) { input.focus(); return; }
+
+  state.answered = true;
+  clearInterval(state.timerInterval);
+  input.disabled = true;
+  document.getElementById('checkBtn').disabled = true;
+
+  const isCorrect = userAnswer === q.word.toLowerCase() ||
+    userAnswer === q.word.toLowerCase().replace(/e$/, '') ||
+    q.word.toLowerCase().startsWith(userAnswer) && userAnswer.length >= q.word.length - 2;
+
+  input.classList.add(isCorrect ? 'correct' : 'wrong');
+  showFeedback(isCorrect, q, userAnswer);
+  recordResult(isCorrect, q);
+  document.getElementById('skipBtn').style.display = 'none';
+  document.getElementById('nextBtn').classList.add('show');
+}
+
+function autoTimeOut() {
+  if (state.answered) return;
+  state.answered = true;
+  const q = state.questions[state.current];
+  showFeedback(false, q, null, true);
+  recordResult(false, q);
+  document.getElementById('skipBtn').style.display = 'none';
+  document.getElementById('nextBtn').classList.add('show');
+}
+
+function skipQuestion() {
+  if (state.answered) return;
+  clearInterval(state.timerInterval);
+  state.answered = true;
+  state.skipped++;
+  const q = state.questions[state.current];
+  state.results.push({ word: q.word, correct: false, skipped: true, def: q.def });
+
+  const fb = document.getElementById('feedback');
+  fb.className = 'feedback wrong-fb show';
+  fb.innerHTML = `<strong>⏭ Skipped.</strong> The correct word was: <strong>${q.word}</strong> — ${q.def}`;
+
+  document.getElementById('skipBtn').style.display = 'none';
+  document.getElementById('nextBtn').classList.add('show');
+  updateStats();
+}
+
+function showFeedback(isCorrect, q, userAnswer, timedOut = false) {
+  const fb = document.getElementById('feedback');
+  if (isCorrect) {
+    state.correct++;
+    fb.className = 'feedback correct-fb show';
+    fb.innerHTML = `✅ <strong>Excellent!</strong> "${q.word}" is correct.<br>
+      <span style="font-size:13px;margin-top:6px;display:block;">${q.ex.replace('___', `<strong>${q.word}</strong>`)}</span>`;
+  } else {
+    state.wrong++;
+    fb.className = 'feedback wrong-fb show';
+    const msg = timedOut ? "⏱ Time's up!" : `❌ Not quite. You answered: <em>${userAnswer || '—'}</em>.`;
+    fb.innerHTML = `${msg} The correct answer is: <strong>${q.word}</strong><br>
+      <span style="font-size:13px;margin-top:6px;display:block;"><em>${q.def}</em></span>`;
+  }
+  updateStats();
+}
+
+function recordResult(isCorrect, q) {
+  state.results.push({ word: q.word, correct: isCorrect, skipped: false, def: q.def });
+}
+
+// ============================================================
+//  NAVIGATION
+// ============================================================
+function nextQuestion() {
+  state.current++;
+  if (state.current >= state.questions.length) {
+    showResults();
+  } else {
+    renderQuestion();
+  }
+}
+
+// ============================================================
+//  STATS
+// ============================================================
+function updateStats() {
+  document.getElementById('statCorrect').textContent = state.correct;
+  document.getElementById('statWrong').textContent = state.wrong;
+  const answered = state.correct + state.wrong + state.skipped;
+  const total = state.questions.length || state.total;
+  const pct = answered > 0 ? Math.round((state.correct / answered) * 100) : 0;
+  document.getElementById('statScore').textContent = pct + '%';
+  document.getElementById('progressFill').style.width = (answered / total * 100) + '%';
+  document.getElementById('progressText').textContent = `${answered} / ${total}`;
+}
+
+// ============================================================
+//  RESULTS
+// ============================================================
+function showResults() {
+  clearInterval(state.timerInterval);
+  document.getElementById('questionArea').classList.remove('show');
+  document.getElementById('resultsScreen').classList.add('show');
+
+  const total = state.questions.length;
+  const pct = Math.round((state.correct / total) * 100);
+
+  document.getElementById('scorePct').textContent = pct + '%';
+  document.getElementById('resCorrect').textContent = state.correct;
+  document.getElementById('resWrong').textContent = state.wrong;
+  document.getElementById('resSkipped').textContent = state.skipped;
+
+  const circle = document.getElementById('scoreCircle');
+  let grade, title, sub;
+  if (pct >= 90) {
+    circle.className = 'score-circle excellent';
+    grade = '🏆 Outstanding!';
+    sub = 'You have an excellent command of academic vocabulary. Keep it up!';
+  } else if (pct >= 75) {
+    circle.className = 'score-circle good';
+    grade = '🎯 Well Done!';
+    sub = 'You have a solid vocabulary base. Review the words you missed to reach the next level.';
+  } else if (pct >= 55) {
+    circle.className = 'score-circle fair';
+    grade = '📚 Good Progress';
+    sub = 'You are building your vocabulary well. Focus on the incorrect words and practice daily.';
+  } else {
+    circle.className = 'score-circle needs-work';
+    grade = '💪 Keep Studying!';
+    sub = 'Academic vocabulary needs more practice. Review the word list and try again — you can do it!';
+  }
+
+  document.getElementById('resultsTitle').textContent = grade;
+  document.getElementById('resultsSub').textContent = sub;
+
+  // Review list
+  const reviewEl = document.getElementById('reviewList');
+  const wrong = state.results.filter(r => !r.correct);
+  if (wrong.length === 0) {
+    reviewEl.innerHTML = '<div style="color:var(--green);font-weight:600;text-align:center;padding:20px;">🎉 Perfect score! All words correct!</div>';
+  } else {
+    reviewEl.innerHTML = `<div class="review-title">📋 Words to Review (${wrong.length})</div>` +
+      wrong.map(r => `
+        <div class="review-item ${r.skipped ? 'r-wrong' : 'r-wrong'}">
+          <div class="review-word">${r.skipped ? '⏭' : '❌'} ${r.word}</div>
+          <div class="review-answer">${r.def}</div>
+        </div>`).join('');
+  }
+
+  updateStats();
+}
+
+function restartQuiz() {
+  state.current = 0;
+  state.correct = 0;
+  state.wrong = 0;
+  state.skipped = 0;
+  state.results = [];
+  state.questions = [...state.questions].sort(() => Math.random() - 0.5);
+
+  document.getElementById('resultsScreen').classList.remove('show');
+  document.getElementById('questionArea').classList.add('show');
+
+  updateStats();
+  renderQuestion();
+}
+
+function newQuiz() {
+  state.correct = 0;
+  state.wrong = 0;
+  state.skipped = 0;
+  state.results = [];
+
+  document.getElementById('resultsScreen').classList.remove('show');
+  document.getElementById('introScreen').classList.remove('hidden');
+  document.getElementById('questionArea').classList.remove('show');
+  updateStats();
+}
+
+// ============================================================
+//  INIT
+// ============================================================
+document.getElementById('introScreen').classList.remove('hidden');
+updateStats();
+</script>
+</body>
+</html>

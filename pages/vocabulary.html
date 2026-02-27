@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Vocabulary | English Lab · UAQ</title>
+<link rel="stylesheet" href="../css/style.css">
+<style>
+.quiz-frame{width:100%;border:none;border-radius:16px;overflow:hidden;min-height:720px;box-shadow:0 8px 32px rgba(0,0,0,.1);}
+.tab-bar{display:flex;gap:8px;margin-bottom:24px;}
+.tab-btn{padding:10px 24px;border:2px solid #e0e6ef;background:white;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;color:var(--navy);transition:all .2s;}
+.tab-btn.active{background:var(--navy);color:white;border-color:var(--navy);}
+.tab-panel{display:none;}
+.tab-panel.active{display:block;}
+</style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-inner">
+      <a href="../index.html" class="brand">
+        <span class="brand-name">ENGLISH LAB</span>
+        <span class="brand-sub">by Dr. Oscar Daniel Lara Montaño · UAQ</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="general.html">General English</a></li>
+        <li><a href="academic.html">Academic English</a></li>
+        <li><a href="toefl.html">TOEFL Prep</a></li>
+        <li><a href="vocabulary.html" class="active">Vocabulary</a></li>
+        <li><a href="grammar.html">Grammar</a></li>
+        <li><a href="speaking.html">Speaking & Writing</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+      <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <div class="page-hero">
+    <div class="page-hero-icon">📘</div>
+    <h1>Vocabulary Practice</h1>
+    <p>Interactive quizzes for General, Academic, and TOEFL vocabulary — from everyday words to advanced AWL error detection.</p>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-label">Select Exercise</div>
+      <div class="section-title">Two interactive quizzes</div>
+
+      <div class="tab-bar">
+        <button class="tab-btn active" onclick="showTab('awl',this)">📖 AWL Definition Quiz</button>
+        <button class="tab-btn" onclick="showTab('error',this)">🔍 Error Detection Challenge</button>
+        <button class="tab-btn" onclick="showTab('lists',this)">📋 Word Lists</button>
+      </div>
+
+      <div id="tab-awl" class="tab-panel active">
+        <div class="info-box" style="margin-bottom:20px;">
+          <strong>AWL Vocabulary Quiz</strong> — 60 Academic Word List words · 3 modes (definition match, fill in the blank, mixed) · 30 second timer · Immediate feedback with example sentences.
+        </div>
+        <iframe src="quiz-awl.html" class="quiz-frame" id="frameAWL"></iframe>
+      </div>
+
+      <div id="tab-error" class="tab-panel">
+        <div class="info-box" style="margin-bottom:20px;">
+          <strong>Error Detection Challenge</strong> — Read academic sentences and identify the word used incorrectly. Choose the correct replacement from 3 semantically similar AWL words. 18–22 second timer. Difficulty: <strong style="color:var(--red);">Advanced / Hard</strong>.
+        </div>
+        <iframe src="quiz-error.html" class="quiz-frame" id="frameError"></iframe>
+      </div>
+
+      <div id="tab-lists" class="tab-panel">
+        <div class="section-label" style="margin-top:0;">Reference</div>
+        <h2 style="font-size:22px;font-weight:800;color:var(--navy);margin-bottom:20px;">Vocabulary Lists by Category</h2>
+
+        <div class="accordion">
+          <div class="acc-item open">
+            <button class="acc-head">📚 Academic Word List — Core 20 (study these first) <span class="arrow">▼</span></button>
+            <div class="acc-body">
+              <table class="data-table">
+                <tr><th>Word</th><th>Definition</th><th>Example</th></tr>
+                <tr><td><strong>analyze</strong></td><td>To examine in detail to discover meaning</td><td>Engineers analyze data before proposing solutions.</td></tr>
+                <tr><td><strong>assess</strong></td><td>To evaluate or estimate the quality of something</td><td>The committee will assess the impact of the policy.</td></tr>
+                <tr><td><strong>conclude</strong></td><td>To reach a decision after consideration</td><td>The study concluded that renewable energy is more cost-effective.</td></tr>
+                <tr><td><strong>constitute</strong></td><td>To form or make up a part of a whole</td><td>Proteins constitute a large portion of cellular structure.</td></tr>
+                <tr><td><strong>demonstrate</strong></td><td>To show clearly by evidence or example</td><td>The experiment demonstrated the validity of the hypothesis.</td></tr>
+                <tr><td><strong>derive</strong></td><td>To obtain or develop from a source</td><td>The formula is derived from Newton's second law.</td></tr>
+                <tr><td><strong>emerge</strong></td><td>To become apparent; to arise from something</td><td>New technologies emerge as a result of ongoing research.</td></tr>
+                <tr><td><strong>establish</strong></td><td>To set up on a firm basis; to prove conclusively</td><td>Scientists established a new framework for quantum computing.</td></tr>
+                <tr><td><strong>evaluate</strong></td><td>To form an idea of the value of something</td><td>Engineers evaluate prototypes before full-scale production.</td></tr>
+                <tr><td><strong>generate</strong></td><td>To produce or create something</td><td>Solar panels generate electricity from sunlight.</td></tr>
+                <tr><td><strong>identify</strong></td><td>To recognize or establish the identity of something</td><td>Researchers identified three main causes of the failure.</td></tr>
+                <tr><td><strong>implement</strong></td><td>To put a plan or decision into effect</td><td>The company implemented new safety regulations last year.</td></tr>
+                <tr><td><strong>indicate</strong></td><td>To point out or show; to be a sign of</td><td>The data indicate a significant increase in temperature.</td></tr>
+                <tr><td><strong>integrate</strong></td><td>To combine parts into a whole system</td><td>The new system integrates mechanical and digital components.</td></tr>
+                <tr><td><strong>investigate</strong></td><td>To carry out a systematic inquiry</td><td>The team investigated the cause of the structural failure.</td></tr>
+                <tr><td><strong>modify</strong></td><td>To make partial changes to something</td><td>The researchers modified the formula to improve efficiency.</td></tr>
+                <tr><td><strong>require</strong></td><td>To need for a purpose; to make obligatory</td><td>The TOEFL requires a minimum score for university admission.</td></tr>
+                <tr><td><strong>significant</strong></td><td>Important; large enough to have a noticeable effect</td><td>There was a significant decrease in pollution after the policy.</td></tr>
+                <tr><td><strong>theory</strong></td><td>A set of principles on which a practice is based</td><td>Einstein's theory of relativity changed modern physics.</td></tr>
+                <tr><td><strong>variable</strong></td><td>An element or factor liable to vary or change</td><td>The experiment controlled all variables except temperature.</td></tr>
+              </table>
+            </div>
+          </div>
+          <div class="acc-item">
+            <button class="acc-head">🔬 Science & Engineering Vocabulary <span class="arrow">▼</span></button>
+            <div class="acc-body">
+              <table class="data-table">
+                <tr><th>Word</th><th>Definition</th><th>Example</th></tr>
+                <tr><td><strong>calibrate</strong></td><td>To adjust an instrument to a standard</td><td>The sensors were calibrated to ensure accurate readings.</td></tr>
+                <tr><td><strong>catalyst</strong></td><td>A substance that speeds up a chemical reaction without being consumed</td><td>Platinum acts as a catalyst in fuel cell reactions.</td></tr>
+                <tr><td><strong>conductivity</strong></td><td>The degree to which a material conducts electricity or heat</td><td>Copper has high electrical conductivity.</td></tr>
+                <tr><td><strong>efficiency</strong></td><td>The ratio of useful output to total input</td><td>Improving engine efficiency reduces fuel consumption.</td></tr>
+                <tr><td><strong>equilibrium</strong></td><td>A state in which opposing forces are balanced</td><td>The system reached chemical equilibrium after 10 minutes.</td></tr>
+                <tr><td><strong>hypothesis</strong></td><td>A proposed explanation based on limited evidence</td><td>The team formulated a hypothesis about thermal expansion.</td></tr>
+                <tr><td><strong>prototype</strong></td><td>A first version from which others are developed</td><td>The engineers built a prototype to test the new design.</td></tr>
+                <tr><td><strong>simulate</strong></td><td>To imitate the conditions or appearance of something</td><td>Software simulates real-world physical conditions.</td></tr>
+                <tr><td><strong>sustainable</strong></td><td>Able to be maintained without harming future needs</td><td>Sustainable engineering practices minimize environmental impact.</td></tr>
+                <tr><td><strong>velocity</strong></td><td>The speed of something in a given direction</td><td>The velocity of the projectile was measured at launch.</td></tr>
+              </table>
+            </div>
+          </div>
+          <div class="acc-item">
+            <button class="acc-head">🌍 Environment & Society Vocabulary <span class="arrow">▼</span></button>
+            <div class="acc-body">
+              <table class="data-table">
+                <tr><th>Word</th><th>Definition</th><th>Example</th></tr>
+                <tr><td><strong>biodiversity</strong></td><td>The variety of life in an ecosystem</td><td>Deforestation threatens biodiversity in tropical rainforests.</td></tr>
+                <tr><td><strong>contaminate</strong></td><td>To make impure by exposure to pollutants</td><td>Industrial waste contaminated the local water supply.</td></tr>
+                <tr><td><strong>emissions</strong></td><td>The discharge of pollutants into the environment</td><td>The government set strict limits on industrial emissions.</td></tr>
+                <tr><td><strong>infrastructure</strong></td><td>The basic physical structures needed for operation</td><td>Investing in infrastructure is essential for economic development.</td></tr>
+                <tr><td><strong>mitigation</strong></td><td>The action of reducing the severity of something</td><td>Engineers proposed mitigation strategies to reduce flooding risks.</td></tr>
+                <tr><td><strong>renewable</strong></td><td>Naturally replenished; not depleted when used</td><td>Wind power is a renewable source of energy.</td></tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="brand-name">ENGLISH LAB</div>
+        <div class="brand-sub">by Dr. Oscar Daniel Lara Montaño · UAQ</div>
+        <p>A free digital learning space for Engineering students at Universidad Autónoma de Querétaro — covering General, Academic, and TOEFL English.</p>
+      </div>
+      <div class="footer-col">
+        <h4>SECTIONS</h4>
+        <ul>
+          <li><a href="general.html">General English</a></li>
+          <li><a href="academic.html">Academic English</a></li>
+          <li><a href="toefl.html">TOEFL Prep</a></li>
+          <li><a href="vocabulary.html">Vocabulary</a></li>
+          <li><a href="grammar.html">Grammar</a></li>
+          <li><a href="speaking.html">Speaking & Writing</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>ABOUT</h4>
+        <ul>
+          <li><a href="about.html">About English Lab</a></li>
+          <li><a href="../index.html">Home</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2024–2025 <strong>English Lab</strong> · Universidad Autónoma de Querétaro</span>
+      <span>Designed by <strong>Dr. Oscar Daniel Lara Montaño</strong> · Facultad de Ingeniería</span>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script>
+  function showTab(id, btn) {
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + id).classList.add('active');
+    btn.classList.add('active');
+  }
+  // Auto-resize iframes
+  ['frameAWL','frameError'].forEach(id => {
+    const f = document.getElementById(id);
+    if(f) f.onload = () => {
+      try { f.style.height = f.contentDocument.body.scrollHeight + 40 + 'px'; } catch(e) {}
+    };
+  });
+  </script>
+</body>
+</html>
